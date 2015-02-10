@@ -7,5 +7,5 @@ Autocomplete (YouCompleteMe)
 
 Using GoInfo over the addProgram function call:  
 
-![img2](https://github.com/cfsalguero/vim_config/tree/master/pictures/snapshot68.png "GoInfo")
+![img2](pictures/snapshot68.png "GoInfo")
 
