@@ -9,6 +9,8 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'fatih/vim-go'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'airblade/vim-gitgutter'
+Bundle 'scrooloose/syntastic'
 Bundle 'wting/gitsessions.vim'
 Bundle 'scrooloose/nerdtree'
 " All of your Plugins must be added before the following line

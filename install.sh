@@ -9,6 +9,7 @@ git submodule update --init --recursive
 
 cd ~/
 vim +BundleInstall +qall
+vim +PluginInstall +qall
 
 if [ -e ~/.vimrc ]; then
     mv ~/.vimrc ~/.vimrc.old
