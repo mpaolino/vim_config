@@ -1,4 +1,4 @@
-Vim config for Go
+#Vim config for Go
 
 GitGutter at the left margin showing lines added/removed in the curren branch.  
 Autocomplete (YouCompleteMe)  
