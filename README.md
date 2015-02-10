@@ -7,5 +7,5 @@ Autocomplete (YouCompleteMe)
 
 Using GoInfo over the addProgram function call:  
 
-![img2](pictures/snapshot68.png "GoInfo")
+![img2](pictures/snapshot69.png "GoInfo")
 
