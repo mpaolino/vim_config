@@ -10,14 +10,46 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'fatih/vim-go'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'wting/rust.vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'wting/gitsessions.vim'
 Bundle 'scrooloose/nerdtree'
+Bundle 'tpope/vim-fugitive'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+:let g:gitgutter_realtime = 0
 :let mapleader = ","
+"" YouCompleteMe options
+""will put icons in Vim's gutter on lines that have a diagnostic set.
+"Turning this off will also turn off the YcmErrorLine and YcmWarningLine
+""highlighting
+let g:ycm_auto_trigger=0
+let g:ycm_min_num_of_chars_for_completion=3
+let g:ycm_enable_diagnostic_signs = 1
+let g:ycm_enable_diagnostic_highlighting = 1
+let g:ycm_always_populate_location_list = 1 "default 0
+let g:ycm_open_loclist_on_ycm_diags = 1 "default 1
+
+let g:ycm_complete_in_strings = 0 "default 1
+let g:ycm_collect_identifiers_from_tags_files = 0 "default 0
+let g:ycm_path_to_python_interpreter = '' "default ''
+
+let g:ycm_server_use_vim_stdout = 0 "default 0 (logging to console)
+let g:ycm_server_log_level = 'info' "default info
+
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'  "where to search for .ycm_extra_conf.py if not found
+let g:ycm_confirm_extra_conf = 1
+
+let g:ycm_register_as_syntastic_checker = 1 "default 1
+let g:Show_diagnostics_ui = 1 "default 1
+
+let g:ycm_goto_buffer_command = 'same-buffer' "[ 'same-buffer', 'horizontal-split', 'vertical-split', 'new-tab' ]
+let g:ycm_filetype_whitelist = { '*': 1 }
+let g:ycm_key_invoke_completion = '<C-Space>'
+:se completeopt=menu
+"let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': ['go'] }
 
 au FileType go nmap <Leader>s <Plug>(go-implements)
 au FileType go nmap <Leader>gd <Plug>(go-doc)
@@ -32,9 +64,9 @@ au FileType go nmap <Leader>i <Plug>(go-info)
 
 let g:go_fmt_fail_silently = 0
 let g:go_fmt_autosave = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
+let g:go_highlight_functions = 0
+let g:go_highlight_methods = 0
+let g:go_highlight_structs = 0
 let g:go_fmt_command = "goimports"
 
 :let g:session_autosave = 'yes'
@@ -60,6 +92,8 @@ set formatoptions=tcql
 set nostartofline
 set laststatus=2
 set hlsearch
+set foldmethod=syntax
+set foldlevelstart=20
 
 syntax on
 colorscheme hybrid
@@ -68,7 +102,7 @@ hi CursorLine term=none cterm=none ctermbg=Black
 hi TabLineFill ctermfg=DarkGrey ctermbg=DarkGrey
 hi TabLine term=none cterm=none ctermfg=White ctermbg=DarkGrey
 hi TabLineSel term=none cterm=none ctermfg=White ctermbg=Blue
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ \ \ \ \ \ \ \ \ [POS=%4l,%4v]\ \ \ \ \ \ [%p%%]\ [LEN=%L] 
+set statusline=%F%m%r%h%w\ \ \ [FORMAT=%{&ff}]\ [TYPE=%Y]\ \ \ [%{fugitive#statusline()}]\ \ \ \ \ [POS=%4l,%4v]\ \ \ \ \ \ [%p%%]\ [LEN=%L] 
 
 let NERDTreeQuitOnOpen = 1
 set <F3>=OR
@@ -88,6 +122,14 @@ set <PageDown>=[6~
 set <Home>=[1~
 set <End>=[4~
 set <Insert>=[2~
+
+" :nmap - Display normal mode maps
+" :imap - Display insert mode maps
+" :vmap - Display visual and select mode maps
+" :smap - Display select mode maps
+" :xmap - Display visual mode maps
+" :cmap - Display command-line mode maps
+" :omap - Display operator pending mode maps
 
 map  <C-n>       :NERDTreeToggle<CR>
 map  <C-Right>   <Esc>:tabn<CR>
