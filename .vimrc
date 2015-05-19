@@ -22,7 +22,7 @@ syntax on
 set completeopt=menu
 set showtabline=2
 
-:let mapleader = ","
+let mapleader = ","
 let g:ycm_auto_trigger=1
 let g:ycm_key_invoke_completion = '<C-Space>'
 let g:ycm_complete_in_strings = 1 "default 1
@@ -59,6 +59,8 @@ let g:go_fmt_command = "goimports"
 
 :let g:session_autosave = 'yes'
 
+let g:airline_powerline_fonts = 1
+
 au BufRead,BufNewFile *.md set filetype=markdown
 
 set number
@@ -90,7 +92,8 @@ hi CursorLine term=none cterm=none ctermbg=Black
 hi TabLineFill ctermfg=DarkGrey ctermbg=DarkGrey
 hi TabLine term=none cterm=none ctermfg=White ctermbg=DarkGrey
 hi TabLineSel term=none cterm=none ctermfg=White ctermbg=Blue
-
+"set statusline=%F%m%r%h%w\ \ \ [FORMAT=%{&ff}]\ [TYPE=%Y]\ \ \ \ \ \ \ \ [POS=%4l,%4v]\ \ \ \ \ \ [%p%%]\ [LEN=%L] 
+"
 "let NERDTreeQuitOnOpen = 1
 set <F3>=OR
 set <F4>=[[D
@@ -119,4 +122,6 @@ map  <C-Up>      <Esc><C-w><Up>
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
+
+command JSONBeautyfier :%!python -m json.tool
 
