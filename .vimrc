@@ -11,9 +11,9 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'fatih/vim-go'
 Bundle 'wting/gitsessions.vim'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'wting/rust.vim'
 Plugin 'scrooloose/syntastic'
 Bundle 'scrooloose/nerdtree'
+Plugin 'bling/vim-airline'
 
 call vundle#end() " required
 filetype plugin indent on " required
@@ -46,6 +46,10 @@ au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 au FileType go nmap <Leader>e <Plug>(go-rename)
 au FileType go nmap <Leader>i <Plug>(go-info)
 
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+
 let g:go_fmt_fail_silently = 0
 let g:go_fmt_autosave = 1
 let g:go_highlight_functions = 0
@@ -70,7 +74,7 @@ set cursorline
 set syntax=sh
 set showmatch
 set autoindent
-set expandtab
+"set expandtab
 set history=150
 set formatoptions=tcql
 set nostartofline
@@ -80,15 +84,14 @@ set foldmethod=syntax
 set foldlevelstart=20
 
 syntax on
-colorscheme hybrid
+colorscheme molokai
 "hi CursorLine term=none cterm=none ctermbg=Black ctermfg=White
 hi CursorLine term=none cterm=none ctermbg=Black
 hi TabLineFill ctermfg=DarkGrey ctermbg=DarkGrey
 hi TabLine term=none cterm=none ctermfg=White ctermbg=DarkGrey
 hi TabLineSel term=none cterm=none ctermfg=White ctermbg=Blue
-set statusline=%F%m%r%h%w\ \ \ [FORMAT=%{&ff}]\ [TYPE=%Y]\ \ \ \ \ \ \ \ [POS=%4l,%4v]\ \ \ \ \ \ [%p%%]\ [LEN=%L] 
-"
-let NERDTreeQuitOnOpen = 1
+
+"let NERDTreeQuitOnOpen = 1
 set <F3>=OR
 set <F4>=[[D
 set <F5>=[[E
@@ -108,8 +111,8 @@ set <End>=[4~
 set <Insert>=[2~
 
 map  <C-n>       :NERDTreeToggle<CR>
-map  <C-Right>   <Esc>:tabn<CR>
-map  <C-Left>    <Esc>:tabp<CR>
+map  <C-l>   <Esc>:tabn<CR>
+map  <C-h>    <Esc>:tabp<CR>
 map  <C-Down>    <Esc><C-w><Down>
 map  <C-Up>      <Esc><C-w><Up>
 
