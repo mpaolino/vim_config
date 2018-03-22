@@ -5,7 +5,7 @@ git clone https://github.com/scrooloose/nerdtree.git ~/vim/bundle/nerdtree
 
 cd ~/.vim/bundle/YouCompleteMe/
 git submodule update --init --recursive
-./install
+./install.sh
 
 cd ~/
 vim +BundleInstall +qall
